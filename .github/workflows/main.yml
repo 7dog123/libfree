@@ -36,18 +36,20 @@ jobs:
           sudo pbuilder --create --basetgz /var/cache/pbuilder/base-arm64.tgz \
           --debootstrap qemu-debootstrap --mirror http://ports.ubuntu.com/ubuntu-ports/ \
           --distribution focal --architecture arm64
+          ls /var/cache/
 
       - name: build focal armhf
         run: |
           sudo pbuilder --create --basetgz /var/cache/pbuilder/base-armhf.tgz \
           --debootstrap qemu-debootstrap --mirror http://ports.ubuntu.com/ubuntu-ports/ \
           --distribution focal --architecture armhf
+          ls /var/cache/
 
-      - name: Create release for master branch
-        if: github.ref == 'refs/heads/master'
-        uses: marvinpinto/action-automatic-releases@latest
-        with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
-          title: "Latest  build"
-          files: /var/cache/pbuilder/base-arm64.tgz /var/cache/pbuilder/base-armhf.tgz
+      #- name: Create release for master branch
+        #if: github.ref == 'refs/heads/master'
+        #uses: marvinpinto/action-automatic-releases@latest
+        #with:
+          #repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          #automatic_release_tag: "latest"
+          #title: "Latest  build"
+          #files: /var/cache/pbuilder/base-arm64.tgz /var/cache/pbuilder/base-armhf.tgz
