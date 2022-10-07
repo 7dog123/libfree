@@ -43,4 +43,11 @@ jobs:
           --debootstrap qemu-debootstrap --mirror http://ports.ubuntu.com/ubuntu-ports/ \
           --distribution focal --architecture armhf
 
-
+      - name: Create release for master branch
+        if: github.ref == 'refs/heads/master'
+        uses: marvinpinto/action-automatic-releases@latest
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          title: "Latest  build"
+          files: /var/cache/pbuilder/base-arm64.tgz /var/cache/pbuilder/base-armhf.tgz
