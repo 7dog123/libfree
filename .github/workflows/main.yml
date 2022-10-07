@@ -43,7 +43,7 @@ jobs:
           sudo pbuilder --create --basetgz /var/cache/pbuilder/base-armhf.tgz \
           --debootstrap qemu-debootstrap --mirror http://ports.ubuntu.com/ubuntu-ports/ \
           --distribution focal --architecture armhf
-          ls /var/cache/
+          ls /var/cache/pbuilder/pbuilder
 
       #- name: Create release for master branch
         #if: github.ref == 'refs/heads/master'
