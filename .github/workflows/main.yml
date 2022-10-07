@@ -45,11 +45,11 @@ jobs:
           sudo mv /var/cache/pbuilder/base-arm64.tgz $GITHUB_WORKSPACE
           sudo mv /var/cache/pbuilder/base-armhf.tgz $GITHUB_WORKSPACE
 
-      - name: Create release for master branch
-        if: github.ref == 'refs/heads/master'
-        uses: marvinpinto/action-automatic-releases@latest
+      - name: Upload artifacts
+        if: ${{ success() }}
+        uses: actions/upload-artifact@v2
         with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
-          title: "Latest  build"
-          files: base-arm64.tgz base-armhf.tgz
+          name: arm
+          path: |
+              base-arm64.tgz
+              base-armhf.tgz
