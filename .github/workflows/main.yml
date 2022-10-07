@@ -35,7 +35,7 @@ jobs:
         run: |
           sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 7FA3303E
           sudo pbuilder --create --basetgz /var/cache/pbuilder/raspian-armhf.tgz \
-          --debootstrap qemu-debootstrap --mirror http://mirrordirector.raspbian.org/raspbian// \
+          --debootstrap qemu-debootstrap --mirror http://archive.raspbian.org/raspbian \
           --distribution buster --architecture armhf
 
       - name: build focal arm
