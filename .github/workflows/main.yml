@@ -42,8 +42,8 @@ jobs:
           sudo pbuilder --create --basetgz /var/cache/pbuilder/base-armhf.tgz \
           --debootstrap qemu-debootstrap --mirror http://ports.ubuntu.com/ubuntu-ports/ \
           --distribution focal --architecture armhf
-          mv /var/cache/pbuilder/base-arm64.tgz $GITHUB_WORKSPACE
-          mv /var/cache/pbuilder/base-armhf.tgz $GITHUB_WORKSPACE
+          sudo mv /var/cache/pbuilder/base-arm64.tgz $GITHUB_WORKSPACE
+          sudo mv /var/cache/pbuilder/base-armhf.tgz $GITHUB_WORKSPACE
 
       - name: Create release for master branch
         if: github.ref == 'refs/heads/master'
