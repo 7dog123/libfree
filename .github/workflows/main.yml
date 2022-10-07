@@ -31,14 +31,13 @@ jobs:
           sudo apt-get -y install ubuntu-dev-tools qemu-user-static
 
       # Runs a set of commands using the runners shell
-      - name: build raspian
+      - name: build focal arm64
         run: |
-          sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 7FA3303E
-          sudo pbuilder --create --basetgz /var/cache/pbuilder/raspian-armhf.tgz \
-          --debootstrap qemu-debootstrap --mirror http://archive.raspbian.org/raspbian \
-          --distribution buster --architecture armhf
+          sudo pbuilder --create --basetgz /var/cache/pbuilder/base-arm64.tgz \
+          --debootstrap qemu-debootstrap --mirror http://ports.ubuntu.com/ubuntu-ports/ \
+          --distribution focal --architecture arm64
 
-      - name: build focal arm
+      - name: build focal armhf
         run: |
           sudo pbuilder --create --basetgz /var/cache/pbuilder/base-armhf.tgz \
           --debootstrap qemu-debootstrap --mirror http://ports.ubuntu.com/ubuntu-ports/ \
