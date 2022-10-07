@@ -30,6 +30,9 @@ jobs:
           sudo apt-get update
           sudo apt-get -y install ubuntu-dev-tools qemu-user-static
 
+      - name: mk-sbuild armhf focal
+        run: mk-sbuild --arch=armhf focal
+
       # Runs a set of commands using the runners shell
       - name: build focal arm64
         run: |
